@@ -1,3 +1,35 @@
+```text
+      _                    ___-------___                    _
+    .' '.              .-""             ""-.              .' '.
+    /     \           .'                     '.           /     \
+   |       |         /      ANTIGRAVITY        \         |       |
+   |  [CLI]|        |  .---.             .---.  |        |[CLI]  |
+    \       \       | /  O  \           /  O  \ |       /       /
+     '.      '.     | \     /           \     / |     .'      .'
+       '.      '.    \ '---'             '---' /    .'      .'
+         '.      '.   '.       .-----.       .'   .'      .'
+           '.      '-._ '-.   /       \   .-' _.-'      .'
+             '-._      '-._'. \       / .'_.-'      _.-'
+        _.-""--._'-._      '-_'-|     |-'_-'      _.-'_.--""-._
+      .'         '-._'-._     \ \     / /     _.-'_.-'         '.
+     /   .-""--.     '-._'-.   \ \   / /   .-'_.-'     .--"".   \
+    |   /       '.       '-.\  | |   | |  /.-'       .'       \   |
+    |  |          \        | | | |   | | | |        /          |  |
+     \  \          |  |    | | | |   | | | |    |  |          /  /
+      '. '.        /  /    | | | |   | | | |    \  \        .' .'
+        '. '.     .' .'    | | | |   | | | |     '. '.    .' .'
+          \  \   /  /     / /  | |   | |  \ \      \  \  /  /
+           |  | |  |     | |   | |   | |   | |      |  ||  |
+        [ CLI ][ CLI ][ CLI ][ CLI ][ CLI ][ CLI ][ CLI ][ CLI ]
+
+         ██████╗ ██████╗ ██████╗ ██╗  ██╗███████╗██╗   ██╗███████╗
+        ██╔═══██╗██╔══██╗██╔══██╗██║  ██║██╔════╝██║   ██║██╔════╝
+        ██║   ██║██████╔╝██████╔╝███████║█████╗  ██║   ██║███████╗
+        ██║   ██║██╔══██╗██╔═══╝ ██╔══██║██╔══╝  ██║   ██║╚════██║
+        ╚██████╔╝██║  ██║██║     ██║  ██║███████╗╚██████╔╝███████║
+         ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚══════╝
+```
+
 # Orpheus MCP Server (v2.0.0)
 
 Um servidor do Model Context Protocol (MCP) desenvolvido em TypeScript/Node.js que transforma a CLI do Gemini em "soldados" executores independentes. Este servidor permite que um orquestrador central (como o Antigravity) delegue tarefas, gerencie filas de dependências e monitore a execução de instâncias em background do Gemini CLI.
@@ -78,7 +110,7 @@ Envia um "exército" inteiro de missões de uma só vez (execução em grid / pa
 *   **Parâmetros**:
     *   `missions` (array de objetos): Uma lista onde cada objeto pode conter `directive`, `mission_name`, `persona` e `wait_for`. Retorna um array com os IDs de todas as missões criadas para monitoramento.
 
-## Aviso de Segurança ⚠️
+## Aviso de Segurança
 
 Este servidor inicia instâncias do Gemini CLI utilizando a flag `--yolo`. Isso significa que os "soldados" executarão todos os comandos (incluindo edições de arquivos e scripts de shell) **sem pedir confirmação humana**. 
 

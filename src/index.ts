@@ -326,7 +326,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       },
       {
         name: "dispatch_army",
-        description: "Envia um array de missões independentes ou interdependentes em grid (paralelismo massivo).",
+        description: "Envia um array de missões independentes ou interdependentes em grid (paralelismo massivo). DICA: Se você (orquestrador) precisar definir regras globais para todos os soldados, crie uma pasta '.orpheus/' e salve arquivos '.md' ou '.json' nela; este servidor injetará esses blueprints automaticamente em todos os soldados.",
         inputSchema: {
           type: "object",
           properties: {

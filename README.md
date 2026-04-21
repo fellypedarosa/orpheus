@@ -45,7 +45,7 @@ O Orpheus adota uma abordagem de **"Soldados Descartáveis e Rastreáveis"**:
 
 ### Novidades na Versão 2.0 (Fase 2)
 
-*   **Contexto Compartilhado (Manifesto e Blueprints):** Se existir um arquivo `.orpheus_manifest.json` no diretório raiz, ou arquivos de documentação (`.md`, `.yaml`, `.json`) dentro da pasta `.orpheus/`, eles serão automaticamente injetados como contexto de restrição global ("Blueprints") na diretiva de todos os soldados despachados.
+*   **Contexto Compartilhado (Manifesto e Blueprints):** Se existir um arquivo `.orpheus_manifest.json` no diretório raiz, ou arquivos de documentação (`.md`, `.yaml`, `.json`) dentro da pasta `.orpheus/`, eles serão automaticamente injetados como contexto de restrição global ("Blueprints") na diretiva de todos os soldados despachados. *Nota: O seu agente/orquestrador (Antigravity) pode descobrir e usar isso criando a pasta `.orpheus/` e colocando os arquivos lá, pois o MCP lida com a injeção invisível.*
 *   **Auto-Linker (Notificação de Recursos):** Soldados são instruídos a notificar o orquestrador sobre arquivos gerados durante a missão. O servidor MCP extrai essas tags e disponibiliza a lista de arquivos criados no campo `resources` ao consultar o status das missões.
 *   **Perfis de Especialização (Personas):** Suporte nativo para instruir o soldado a assumir papéis como `ui_expert`, `security_auditor`, `test_engineer` ou qualquer outro contexto customizado antes de iniciar a missão.
 *   **Grafo de Dependências e Filas:** Missões podem ser despachadas assincronamente informando quais outras missões devem terminar primeiro (parâmetro `wait_for`).

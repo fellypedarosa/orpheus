@@ -26,6 +26,7 @@ interface Mission {
   output?: string;
   error?: string;
   child?: ChildProcess;
+  resources?: string[];
 }
 
 // Manage isolated "soldier" tasks of Gemini CLI
@@ -49,7 +50,8 @@ class SoldierCommander {
       persona,
       status: "pending",
       waitFor,
-      logFilePath
+      logFilePath,
+      resources: []
     });
 
     // Tenta iniciar missões pendentes
@@ -138,6 +140,9 @@ class SoldierCommander {
       finalDirective = `[CONTEXTO COMPARTILHADO (Manifestos e Blueprints)]\n${sharedContext.trim()}\n\n[DIRETIVA DA MISSÃO]\n${finalDirective}`;
     }
 
+    // 2. Auto-Linker (Notificação de Recursos)
+    finalDirective = `[INSTRUÇÃO DE SISTEMA: AUTO-LINKER]\nSempre que você criar um novo arquivo essencial (como um novo componente, rota, script, css) que outros agentes/arquivos poderão precisar referenciar, você DEVE emitir exatamente a seguinte tag no seu texto de resposta (substitua pelo caminho do arquivo): [RESOURCE_CREATED: caminho/do/arquivo.ext]\n\n${finalDirective}`;
+
     // 3. Perfis de Especialização (Personas)
     if (mission.persona) {
       let personaContext = "";
@@ -193,6 +198,15 @@ class SoldierCommander {
       mission.exitCode = code ?? -1;
       mission.output = fullOutput;
       mission.child = undefined;
+
+      // Extract generated resources
+      const resourceRegex = /\[RESOURCE_CREATED:\s*(.+?)\]/g;
+      let match;
+      while ((match = resourceRegex.exec(fullOutput)) !== null) {
+        if (match[1]) {
+          mission.resources?.push(match[1].trim());
+        }
+      }
       
       if (code !== 0) {
         mission.status = "failed";
@@ -226,7 +240,8 @@ class SoldierCommander {
       startTime: m.startTime,
       endTime: m.endTime,
       exitCode: m.exitCode,
-      error: m.error
+      error: m.error,
+      resources: m.resources
     }));
   }
 
